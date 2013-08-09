@@ -1,0 +1,28 @@
+<apex:page controller="Quick_Contact_Search_controller">
+  <apex:form >
+      <apex:pageBlock title="Quick Search Contact">
+      <apex:pageMessages />
+          <apex:pageBlockSection >
+              <apex:panelGrid columns="2" id="theContactSearchGrid">
+                <apex:outputLabel value="Contact Name"/><apex:inputtext value="{!cn}"/>
+                <apex:outputLabel value="Account Name"/><apex:inputtext value="{!an}"/>
+                <apex:outputLabel value="Contact Email"/><apex:inputtext value="{!ce}"/>
+              </apex:panelGrid>   
+          </apex:pageBlockSection>
+          <apex:pageBlockButtons >
+              <apex:commandButton action="{!SearchContact}" value="Go" />
+          </apex:pageBlockButtons>
+       </apex:pageBlock>
+       <apex:pageBlock >
+          <apex:pageBlockSection >
+              <apex:outputLabel value="{!SearchMessage }" /><br/>
+              <apex:pageBlockTable value="{!SearchedContact}" var="res" >
+                  <apex:column value="{!res.id}"/>
+                  <apex:column value="{!res.Name}"/>
+                  <apex:column value="{!res.Email }"/>
+                  <apex:column value="{!res.Account.name}"/>                
+                </apex:pageBlockTable>
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

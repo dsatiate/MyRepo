@@ -1,0 +1,8 @@
+<apex:page >
+  <apex:form >
+      <apex:pageblock >
+          <c:myComponent myValue="Checking" myColor="Red"/><br/>
+          <c:myComponent myValue="Checking" myColor="Green"/>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

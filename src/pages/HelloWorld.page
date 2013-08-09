@@ -1,0 +1,14 @@
+<apex:page standardController="Account" recordSetVar="accounts" tabstyle="account" >
+      <apex:form >
+      <apex:pageBlock title="Account List">
+                <apex:pageBlockTable value="{!accounts}" var="a">
+                    <apex:column value="{!a.ID}"/>
+                    <apex:column >
+                    <apex:inputField value="{!a.name}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <apex:commandButton value="Save" action="{!save}"/>
+
+      </apex:pageBlock>
+      </apex:form>
+</apex:page>
