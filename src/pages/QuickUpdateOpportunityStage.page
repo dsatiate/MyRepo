@@ -1,0 +1,24 @@
+<apex:page standardController="Opportunity" recordSetVar="Opportunities" tabstyle="Opportunity" extensions="quickedit">
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="Save" id="theSaveButton"/>
+                <apex:commandButton action="{!Create}" value="Create New" id="theCreateButton"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!Opportunities}" var="o">
+                <apex:column headerValue="Action" >
+                    <apex:commandLink action="{!edit}" value="Edit More" style="Blue" id="theEditLink"/>
+                </apex:column>
+                <apex:column headerValue="Opportunity Name" >
+                    <apex:commandLink action="{!save}" value="{!o.name}" id="theDetail"/>
+                </apex:column>  
+                <apex:column headerValue="Stage">
+                    <apex:inputField value="{!o.StageName}"/>                
+                </apex:column>
+                <apex:column headerValue="Description">
+                    <apex:inputField value="{!o.Description}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageblock>        
+    </apex:form>
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page Controller="AccountController">
+<apex:form >
+    <apex:pageMessages />
+        <apex:pageBlock title="Helloooo {!$User.FirstName}!"            mode="Edit">
+        <p>You are now viewing the {!accountObj.name}           account.</p>
+        <apex:pageBlockSection title="Account Section"          columns="2">
+            <apex:inputField value="{!accountObj.name}"/>
+            <apex:inputField value="{!accountObj.accountnumber}"/>
+            <apex:inputField value="{!accountObj.industry}"/>
+            <apex:inputField value="{!accountObj.billingstreet}"/> 
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}"                    value="Save"/>
+            <apex:commandButton action="{!cancel}"                  value="Cancel"/> 
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form> 
+</apex:page>
