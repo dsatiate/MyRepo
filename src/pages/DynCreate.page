@@ -1,0 +1,28 @@
+<apex:page controller="DynCreateObj">
+    <apex:form >
+    <apex:pageBlock > 
+    <apex:pageMessages />
+        <apex:pageBlockSection title="Selection" columns="1">
+            <apex:outputLabel value="Select Object">
+                <apex:selectList value="{!CurrentSelection}" multiselect="false" size="1" >
+                    <apex:selectOptions value="{!PickLOption}"/>
+                    <apex:actionSupport event="onchange" action="{!QueryDB}" reRender="TheCreatePageBlock" status="status"/>
+                </apex:selectList>
+            </apex:outputLabel>
+            <apex:actionStatus startText="Loading..." id="status"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <apex:pageBlock Id="TheCreatePageBlock">
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Save" rendered="{!not(isnull(CurrentSelection))}"/>
+            <apex:commandButton action="{!cancel}" value="Cancel" immediate="true" rendered="{!not(isnull(CurrentSelection))}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="{!CurrentSelection} Create Page" rendered="{!not(isnull(CurrentSelection))}">
+            <apex:repeat value="{!FieldList}" var="fieldName">  
+                   <apex:inputField value="{!sobj[fieldName]}"/>  
+            </apex:repeat>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>    
+</apex:page>

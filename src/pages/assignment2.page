@@ -1,0 +1,29 @@
+<apex:page standardController="Account" tabstyle="account" sidebar="false" RenderAs="pdf">
+<apex:form >
+        <apex:pageBlock title="Account Summary and Contacts" mode="detail">
+            <apex:pageBlockSection title="Account Section" columns="2">
+                <apex:outputField value="{!account.name}"/>
+                <apex:outputField value="{!account.accountnumber}"/>
+                <apex:outputField value="{!account.industry}"/>
+                <apex:outputField value="{!account.billingstreet}"/> 
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Contact Section" >
+            <tr>
+                <td>Name</td>
+                <td>Birthdate</td>
+                <td>Email</td>
+                <td>Fax</td>
+            </tr>
+            <apex:repeat var="contacts" value="{!Account.Contacts}">
+            <tr>
+                <td>{!Contacts.Name}</td>
+                <td>{!Contacts.Birthdate}</td>
+                <td>{!Contacts.Email}</td>
+                <td>{!Contacts.Fax}</td>
+            </tr>
+            </apex:repeat>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

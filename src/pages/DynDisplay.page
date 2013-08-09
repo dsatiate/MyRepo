@@ -1,0 +1,40 @@
+<apex:page controller="DynDisplayObj">
+    <apex:form >
+    <apex:pageBlock > 
+    <apex:pageMessages />
+        <apex:pageBlockSection title="Selection" columns="1">
+            <apex:outputLabel value="Select Object">
+                <apex:selectList value="{!CurrentSelection}" multiselect="false" size="1" >
+                    <apex:selectOptions value="{!PickLOption}"/>
+                    <apex:actionSupport event="onchange" reRender="TheFieldPageBlock" status="status"/>
+                </apex:selectList>
+            </apex:outputLabel>
+            <apex:actionStatus startText="Loading..." id="status"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <apex:pageBlock Id="TheFieldPageBlock">
+        <apex:pageBlockSection title="Field Selection" columns="1" rendered="{!not(isnull(CurrentSelection))}">
+            <apex:outputLabel value="Select Fields">
+                <apex:selectList value="{!CurrentSelection_field}" multiselect="true" size="20" >
+                    <apex:selectOptions value="{!PickLOption_field}"/>    
+                </apex:selectList>
+            </apex:outputLabel>
+            
+            <apex:commandButton value="Query" action="{!QueryDB}"/>            
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Result Table" id="ResultTable" rendered="{!not(isnull(CurrentSelection))}">
+            <apex:outputText value="{!QString}"/><br/>
+            <apex:pageBlockTable value="{!SearchedObject}" var="item">
+                <apex:column value="{!item.id}"/>
+                <!-- This is the dynamic reference part -->
+                <apex:repeat value="{!CurrentSelection_field}" var="f">
+                    <apex:column value="{!item[f]}">
+                        <apex:facet name="header" >{!f}</apex:facet>
+                    </apex:column>
+                </apex:repeat>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>    
+</apex:page>

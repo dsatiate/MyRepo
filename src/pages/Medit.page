@@ -1,0 +1,14 @@
+<apex:page Controller="RowEditingcontroller" >
+  <apex:form >
+      <apex:pageBlock >
+          <apex:pageBlockSection title="Quick Edit Opportunity">
+          <apex:inputText id="a"/>
+              <apex:pageBlockTable value="{!results}" var="res" >
+                  <apex:column value="{!res.id}"/>
+                  <apex:column value="{!res.Description}"/ >                              
+              </apex:pageBlockTable>              
+          </apex:pageBlockSection>
+          <apex:commandButton value="Search" action="{!search}"/>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

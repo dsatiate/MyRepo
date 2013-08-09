@@ -1,0 +1,9 @@
+<apex:component controller="myComController" >
+    <apex:attribute name="myColor" type="String" description="Color of text"/>
+    <apex:attribute name="myValue" type="String" description="Value" required="true" 
+    	assignTo="{!ContollerValue}"/>
+    <h1>
+    	<apex:outputtext value="{!myValue}" style="color:{!myColor}"/>
+        <apex:outputtext value="{!ContollerValue}" style="color:{!myColor}"/>
+    </h1>    
+</apex:component>

@@ -1,0 +1,39 @@
+<apex:page controller="sampleCon">
+    <apex:form >
+    <apex:pageBlock > 
+    <apex:pageMessages />
+        <apex:pageBlockSection title="Selection" columns="1">
+            <apex:outputLabel value="Select Object">
+                <apex:selectList value="{!CurrentSelection}" multiselect="false" size="1" >
+                    <apex:selectOptions value="{!PickLOption}"/>
+                    <apex:actionSupport event="onchange" reRender="ThePageBlock" status="status"/>
+                </apex:selectList>
+            </apex:outputLabel>
+            <apex:actionStatus startText="Loading..." id="status"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:pageBlock Id="ThePageBlock">    
+        <apex:pageBlockSection title="Account Form" columns="1" rendered="{!CurrentSelection=='Account'}">
+            <apex:panelGrid columns="2" id="theAccountGrid">
+                <apex:outputLabel value="Name"/><apex:inputtext value="{!it1}"/>
+                <apex:outputLabel value="Phone"/><apex:inputtext value="{!it2}"/>
+                <apex:outputLabel value="City"/><apex:inputtext value="{!it3}"/>
+                <apex:outputLabel value="Zip"/><apex:inputtext value="{!it4}"/>
+            </apex:panelGrid>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Contact Form" columns="1" rendered="{!CurrentSelection=='Contact'}">
+            <apex:panelGrid columns="2" id="theContactGrid">
+                <apex:outputLabel value="First Name"/><apex:inputtext value="{!it5}"/>
+                <apex:outputLabel value="Last Name"/><apex:inputtext value="{!it6}"/>
+                <apex:outputLabel value="Email"/><apex:inputtext value="{!it7}"/>
+                <apex:outputLabel value="Phone"/><apex:inputtext value="{!it21}"/>
+            </apex:panelGrid>      
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Create" columns="1">
+            <apex:commandButton value="Create" action="{!cp}"/>
+        </apex:pageBlockSection>
+        </apex:pageBlock>    
+    </apex:form>
+</apex:page>

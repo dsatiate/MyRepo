@@ -1,0 +1,26 @@
+<apex:page StandardController="Account">
+    <apex:form >
+    <apex:pageMessages />
+
+        <apex:pageBlock title="Helloooo {!$User.FirstName}!" mode="Edit">
+        <p>You are now viewing the {!account.name} account.</p>
+            <apex:pageBlockSection title="Account Section" columns="2">
+            <apex:outputField value="{!account.name}"/>
+            <apex:outputField value="{!account.ownerid}"/>
+            <apex:outputField value="{!account.accountnumber}"/>
+            <apex:outputField value="{!account.billingstreet}"/> 
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Quick Edit" columns="2">
+            <apex:inputField value="{!account.industry}"/>            
+            <apex:inputField value="{!account.Account_Status__c}"/>
+            <apex:inputField value="{!account.Expiration_Date__c}"/>
+            <apex:inputField value="{!account.Site}"/>
+            <apex:inputField value="{!account.Phone}"/> 
+            <apex:inputField value="{!account.Fax}"/>
+            </apex:pageBlockSection>
+            <apex:commandButton value="Save" action="{!save}"/>
+            <apex:commandButton value="Cancel" action="{!Cancel}"/>
+
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>
